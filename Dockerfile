@@ -9,9 +9,9 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-RUN apk add --no-cache tzdata
-
-RUN cp /usr/share/zoneinfo/Asia/Singapore /etc/localtime \
+RUN apk add --no-cache tzdata \
+    && rm -rf /var/cache/apk/* \
+    && cp /usr/share/zoneinfo/Asia/Singapore /etc/localtime \
     && echo "Asia/Singapore" > /etc/timezone
 
 USER root
