@@ -1,0 +1,60 @@
+---
+name: 'build-push'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Dockerfile
+  workflow_dispatch:
+
+env:
+  DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
+  GH_SECRET: ${{ secrets.GH_SECRET }}
+  OWNER: ${{ github.repository_owner }}
+  GROUP: base
+  FILE: alpine
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          show-progress: false
+
+      - name: 'setup qemu'
+        uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3
+
+      - name: 'setup docker buildx'
+        uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3
+
+      - name: 'login to dockerhub'
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3
+        with:
+          username: ${{ env.OWNER }}
+          password: ${{ env.DOCKER_SECRET }}
+
+      - name: 'login to github container registry'
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.OWNER }}
+          password: ${{ env.GH_SECRET }}
+
+      - name: 'extract version from dockerfile'
+        id: extract_version
+        run: |
+          TAG=$(sed -n 's/^ARG BASE_VERSION=v\?\([0-9.]*\).*/\1/p' Dockerfile)
+          echo "TAG=${TAG#v}" >> $GITHUB_ENV
+          echo "TAG=${TAG#v}"
+
+      - name: 'push'
+        uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5
+        with:
+          targets: push
