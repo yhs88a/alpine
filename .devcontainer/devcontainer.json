@@ -1,0 +1,24 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/yhs88a/devcontainer
+{
+    "name": "alpine",
+    "dockerComposeFile": [
+      "./docker-compose.devcontainer.yml"
+    ],
+    "service": "devcontainer-alpine",
+    "remoteUser": "vscode",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "zsh"
+        },
+      "extensions": []
+      }
+    },
+    "workspaceFolder": "/home/vscode/alpine",
+    "features": {
+        "ghcr.io/yhs88a/devcontainer/common-utils:1": {},
+        "ghcr.io/yhs88a/devcontainer/docker-in-docker:1": {}
+    }
+}
