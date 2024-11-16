@@ -1,3 +1,17 @@
+# Global/VisualStudioCode.gitignore
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
 # Global/Linux.gitignore
 *~
 
@@ -12,20 +26,6 @@
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
-# Global/VisualStudioCode.gitignore
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
 
 # Global/Windows.gitignore
 # Windows thumbnail cache files

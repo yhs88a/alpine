@@ -10,6 +10,7 @@ on:
   workflow_dispatch:
 
 env:
+  DOCKER_USER: ${{ secrets.DOCKER_USER }}
   DOCKER_SECRET: ${{ secrets.DOCKER_SECRET }}
   GH_SECRET: ${{ secrets.GH_SECRET }}
   OWNER: ${{ github.repository_owner }}
@@ -37,7 +38,7 @@ jobs:
       - name: 'login to dockerhub'
         uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3
         with:
-          username: ${{ env.OWNER }}
+          username: ${{ env.DOCKER_USER }}
           password: ${{ env.DOCKER_SECRET }}
 
       - name: 'login to github container registry'

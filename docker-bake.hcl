@@ -57,6 +57,6 @@ target "push" {
     "${OWNER}/${FILE}",
     "${OWNER}/${FILE}:${TAG}",
     "ghcr.io/${OWNER}/${FILE}",
-    "ghcr.io/${OWNER}/${FILE}:${TAG}"
+    "ghcr.io/${OWNER}/${FILE}:${TAG}",
   ]
 }
