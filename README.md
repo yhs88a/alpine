@@ -3,7 +3,7 @@
 [![Build status](https://github.com/yhs88a/alpine/actions/workflows/build-push.yml/badge.svg)](https://github.com/yhs88a/alpine/actions/workflows/build-push.yml)
 [![Docker Image Size (latest)](https://img.shields.io/docker/image-size/yhs88a/alpine/latest)](https://hub.docker.com/r/yhs88a/alpine)
 [![Docker Pulls](https://img.shields.io/docker/pulls/yhs88a/alpine)](https://hub.docker.com/r/yhs88a/alpine)
-[[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)]
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![Licence: MIT](https://img.shields.io/github/license/yhs88a/alpine)](https://github.com/yhs88a/alpine/blob/main/LICENSE)
 
 Alpine base image.
